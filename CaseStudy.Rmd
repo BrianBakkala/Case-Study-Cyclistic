@@ -44,7 +44,7 @@ library(geosphere) #geo distance
 library(lubridate)
 
 #Maps
-install.packages(c("cowplot", "googleway", "ggplot2", "ggrepel", 
+install.packages(c("cowplot", "googleway",  "ggrepel", 
 "ggspatial", "libwgeom", "sf", "rnaturalearth", "rnaturalearthdata" ))
 
 library("sf")
@@ -151,7 +151,7 @@ df$end_day_is_weekend <- df$end_day_of_week %in% c("Sat", "Sun")
 
 ```
 
-
+### A strange anomaly
 Some rows have the odd characteristic of ending before they start! 
 
 ```{r opportunity for data recovery}
@@ -300,7 +300,7 @@ ggplot(data = dataframe, aes(x = manhattan_dist_m, fill = member_casual)) +
   xlim(0, 6500) +
   facet_wrap(~ member_casual) +
   geom_vline(data = medians, aes(xintercept = median, color = member_casual),
-             linetype = "dashed", size = 1) +
+             linetype = "dashed", linewidth = 1) +
   geom_text(data = medians, aes(x = median, y = Inf, label = round(median, 2)),
             angle = 90, vjust = 1.5, hjust = 1.1, size = 3, color = "black") +
   theme_minimal() +
@@ -322,7 +322,7 @@ ggplot(data = dataframe, aes(x = great_circle_dist_m, fill = member_casual)) +
   xlim(0, 6500) +
   facet_wrap(~ member_casual) +
   geom_vline(data = medians, aes(xintercept = median, color = member_casual),
-             linetype = "dashed", size = 1) +
+             linetype = "dashed", linewidth = 1) +
   geom_text(data = medians, aes(x = median, y = Inf, label = round(median, 2)),
             angle = 90, vjust = 1.5, hjust = 1.1, size = 3, color = "black") +
   theme_minimal() +

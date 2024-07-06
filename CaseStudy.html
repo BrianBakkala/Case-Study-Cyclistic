@@ -389,7 +389,7 @@ library(geosphere) #geo distance
 library(lubridate)
 
 #Maps
-install.packages(c(&quot;cowplot&quot;, &quot;googleway&quot;, &quot;ggplot2&quot;, &quot;ggrepel&quot;, 
+install.packages(c(&quot;cowplot&quot;, &quot;googleway&quot;,  &quot;ggrepel&quot;, 
 &quot;ggspatial&quot;, &quot;libwgeom&quot;, &quot;sf&quot;, &quot;rnaturalearth&quot;, &quot;rnaturalearthdata&quot; ))
 
 library(&quot;sf&quot;)
@@ -480,6 +480,9 @@ df$end_day &lt;- day(df$ended_at)
 df$end_hour &lt;- hour(df$ended_at)
 df$end_day_of_week &lt;- wday(df$ended_at, label = TRUE)
 df$end_day_is_weekend &lt;- df$end_day_of_week %in% c(&quot;Sat&quot;, &quot;Sun&quot;)</code></pre>
+</div>
+<div id="a-strange-anomaly" class="section level3">
+<h3>A strange anomaly</h3>
 <p>Some rows have the odd characteristic of ending before they
 start!</p>
 <pre class="r"><code>#check rides that are shorter than 1 second
@@ -679,7 +682,7 @@ ggplot(data = dataframe, aes(x = manhattan_dist_m, fill = member_casual)) +
   xlim(0, 6500) +
   facet_wrap(~ member_casual) +
   geom_vline(data = medians, aes(xintercept = median, color = member_casual),
-             linetype = &quot;dashed&quot;, size = 1) +
+             linetype = &quot;dashed&quot;, linewidth = 1) +
   geom_text(data = medians, aes(x = median, y = Inf, label = round(median, 2)),
             angle = 90, vjust = 1.5, hjust = 1.1, size = 3, color = &quot;black&quot;) +
   theme_minimal() +
